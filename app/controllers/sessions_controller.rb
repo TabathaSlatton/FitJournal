@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
     def omniauth
         @user = User.from_omniauth(auth)
         @user.save
-        session[:user_id] = @user.id
-        redirect_to home_path
+        # this is redirecting to my root route
+        sign_in_and_redirect @user
     end
 
 private
