@@ -2,3 +2,5 @@
     <%= @user.first_name %>
 <% end %>
 <p>this is the user show page</p>
+
+        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
