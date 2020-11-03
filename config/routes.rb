@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   # get 'auth/failure', to: redirect('/')
   
   
-  root to: "users#show"
+  root to: "application#home"
 end

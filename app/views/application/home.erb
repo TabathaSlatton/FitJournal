@@ -1,4 +1,20 @@
-<% if user_signed_in? %>
-    <%= @user.first_name %>
-<% end %>
+<div class="jumbotron">
+  <h1 class="display-3">Welcome Back, <%= @user.first_name %></h1>
+  <%# summary card. I want this to be 75% of the screen%>
+  <div class="card bg-light mb-3" style="max-width: 20rem;">
+  <div class="card-header lead">Summary for <%= current_date %>: </div>
+  <div class="card-body">
+    <h4 class="card-title">Light card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<%# long term goal card. I want this to be 25% of the screen %>
+<div class="card bg-light mb-3" style="max-width: 20rem;">
+  <div class="card-header lead">Long Term Goal: </div>
+  <div class="card-body">
+    <h4 class="card-title">Light card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+</div>
 
