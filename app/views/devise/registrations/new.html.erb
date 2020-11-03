@@ -12,6 +12,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name, autocomplete: "last_name" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -36,10 +46,7 @@
 <%= render "devise/shared/links" %>
 </div>
 
-<%# <div class="card border-info mb-3" style="max-width: 20rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h4 class="card-title">Info card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div> %>
+              <%# 
+              user.first_name = auth.info.first_name
+              user.last_name = auth.info.last_name
+              user.profile_img_url = auth.info.image %>
