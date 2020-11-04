@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  water_intake: 1
+  notes: MyText
+  mood: MyString
+  daily_goal: MyString
+
+two:
+  user_id: 1
+  water_intake: 1
+  notes: MyText
+  mood: MyString
+  daily_goal: MyString
