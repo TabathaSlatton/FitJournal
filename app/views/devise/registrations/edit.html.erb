@@ -1,8 +1,8 @@
 <div class="d-flex align-items-center flex-column">
-  <div class="card border-info mb-3">
+  <div class="card bg-info mb-3">
     <div class="card-header text-center"><h1>Edit <%= resource_name.to_s.humanize %></h1></div>
-      <div class="card-body">
-        <div class="card-group">
+      <div class="card-body ">
+        <div class="card-group  ">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
               <%# first card %>
@@ -24,84 +24,86 @@
                       </div><br>
                       <%# password confirmation %>
                       <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div><br>
-  <%# current password %>
-  <div class="field">
-  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-    </div>
-  </div><br>
-  <%# card 2  %>
-<div class="card">
-    <div class="card-body">
-    <h5 class="card-title">User Info</h5>
-    <%# first name %>
-    <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
-  </div>
-  <%# last name %>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name, autocomplete: "last_name" %>
-  </div>
-<%# username %>
-<div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username, autocomplete: "username" %>
-  </div>
-<%# profile pic %>
-  <div class="field">
-    <%= f.label :profile_img_url %><br>
-    <%= f.text_field :profile_img_url, autocomplete: "profile_img_url" %>
-  </div>
-  </div>
-    </div><br>
-
-    <%# card 3  %>
-<div class="card">
-    <div class="card-body">
-    <h5 class="card-title">Stats</h5>
-    <%# starting weight %>
-    <div class="field">
-    <%= f.label :starting_weight %><br>
-    <%= f.text_field :starting_weight, autocomplete: "starting_weight" %>
-  </div>
-  <%# current weight %>
-  <div class="field">
-    <%= f.label :current_weight %><br>
-    <%= f.text_field :current_weight, autocomplete: "current_weight" %>
-  </div>
-<%# goal weight %>
-<div class="field">
-    <%= f.label :goal_weight %><br>
-    <%= f.text_field :goal_weight, autocomplete: "goal_weight" %>
-  </div>
-<%# long term goal %>
-  <div class="field">
-    <%= f.label :long_term_goal %><br>
-    <%= f.text_area :long_term_goal, autocomplete: "long_term_goal" %>
-  </div>
-  </div>
-  </div>
-    </div><br>
+                        <%= f.label :password_confirmation %><br />
+                        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                      </div><br>
+                      <%# current password %>
+                      <div class="field">
+                        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                        <%= f.password_field :current_password, autocomplete: "current-password" %>
+                      </div>
+                    </div>
+                  </div><br>
+                  <%# card 2  %>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">User Info</h5>
+                      <%# first name %>
+                      <div class="field">
+                        <%= f.label :first_name %><br>
+                        <%= f.text_field :first_name, autocomplete: "first_name" %>
+                      </div><br>
+                      <%# last name %>
+                      <div class="field">
+                        <%= f.label :last_name %><br>
+                        <%= f.text_field :last_name, autocomplete: "last_name" %>
+                      </div><br>
+                      <%# username %>
+                      <div class="field">
+                        <%= f.label :username %><br>
+                        <%= f.text_field :username, autocomplete: "username" %>
+                      </div><br>
+                      <%# profile pic %>
+                        <div class="field">
+                          <%= f.label :profile_img_url, "Profile Pic URL" %><br>
+                          <%= f.text_field :profile_img_url, autocomplete: "profile_img_url" %>
+                        </div>
+                      </div>
+                    </div><br>
+                  <%# card 3  %>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Stats</h5>
+                      <%# starting weight %>
+                      <div class="field">
+                        <%= f.label :starting_weight %><br>
+                        <%= f.text_field :starting_weight, autocomplete: "starting_weight" %>
+                        </div><br>
+                      <%# current weight %>
+                      <div class="field">
+                        <%= f.label :current_weight %><br>
+                        <%= f.text_field :current_weight, autocomplete: "current_weight" %>
+                      </div><br>
+                      <%# goal weight %>
+                      <div class="field">
+                          <%= f.label :goal_weight %><br>
+                          <%= f.text_field :goal_weight, autocomplete: "goal_weight" %>
+                        </div><br>
+                      <%# long term goal %>
+                        <div class="field">
+                          <%= f.label :long_term_goal %><br>
+                          <%= f.text_area :long_term_goal, autocomplete: "long_term_goal" %>
+                        </div>
+                      </div>
+                    </div>
+              </div><br>
   <%# submit button %>
   <div class="actions">
     <%= f.submit "Update", class:"btn btn-primary"  %>
   </div>
-
-  </div>
-  </div>
-  </div>
-<% end %>
-
+  <%end%>
+  <div class="text-center">
 <h3>Cancel my account</h3>
 
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-dark" %></p>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+
 
 <%= link_to "Back", :back %>
 

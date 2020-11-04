@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # get '/auth/:provider/callback' => 'sessions#omniauth' 
   # get 'auth/failure', to: redirect('/')
-  
+  resources :users
   
   root to: "application#home"
 end

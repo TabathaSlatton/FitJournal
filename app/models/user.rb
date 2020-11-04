@@ -14,7 +14,8 @@ class User < ApplicationRecord
               user.last_name = auth.info.last_name
               user.profile_img_url = auth.info.image
               user.email = auth.info.email
-              user.password = Devise.friendly_token[0,20]
+              user.password = auth.info.first_name
+              # user.password = Devise.friendly_token[0,20]
           end
         end
   # def self.from_omniauth(auth)
