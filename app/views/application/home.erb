@@ -1,21 +1,58 @@
 <div class="jumbotron">
   <h1 class="display-3">Welcome Back, <%= @user.first_name %></h1>
 
+<div class="card-deck">
   <%# summary card. I want this to be 75% of the screen%>
-  <div class="card bg-light mb-3" style="max-width: 20rem;">
+  <div class="card bg-light mb-3" style="max-width: 60rem;">
   <div class="card-header lead">Summary for <%= current_date %>: </div>
   <div class="card-body">
-    <h4 class="card-title">Light card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div class="card-group">
+    <div class="card">
+    
+    <div class="card-body">
+      <h5 class="card-title">Pounds Lost:</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+  </div>
+  <div class="card">
+    
+    <div class="card-body">
+      <h5 class="card-title">Calories In:</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Add Calories</a>
+            </li>
+        </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Calories Out:</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Add Exercise</a>
+            </li>
+        </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Net Calories: </h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+  </div>
+</div>
   </div>
 </div>
 <%# long term goal card. I want this to be 25% of the screen %>
-<div class="card bg-light mb-3" style="max-width: 20rem;">
-  <div class="card-header lead">Long Term Goal: </div>
+<div class="card bg-dark text-white text-center p-3" style="max-width: 20rem; height: 20rem">
   <div class="card-body">
     <h4 class="card-title">Light card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text"><%= current_user.long_term_goal %></p>
   </div>
+</div>
 </div>
 </div>
 
