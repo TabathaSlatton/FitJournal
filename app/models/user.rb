@@ -2,10 +2,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
          :omniauthable 
+
   has_many :daily_journals
-      # I've decided to not have a connection from users to meals and workouts for the purpose of this app
-        # has_many :meals, through: :daily_journals
-        # has_many :workouts, through: :daily_journals
+  has_many :goals
+  has_many :posts
+
+    # maybe user can pull up all of the posts they've liked and commented on
+  has_many :likes 
+  has_many :comments
 
          def self.google_omniauth(auth)
           where(provider: auth["provider"], uid: auth["uid"]).first_or_create(email: auth["info"]["email"]) do |user|
