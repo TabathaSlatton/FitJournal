@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  daily_journal_id: 1
+  time_of_day: MyString
+  calories: 1
+  focus: MyString
+  duration: MyString
+  notes: MyText
+
+two:
+  daily_journal_id: 1
+  time_of_day: MyString
+  calories: 1
+  focus: MyString
+  duration: MyString
+  notes: MyText
