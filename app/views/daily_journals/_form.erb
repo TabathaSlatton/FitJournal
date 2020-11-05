@@ -1,1 +1,81 @@
-<h1>Journal Entry for <%= current_date %>: </h1>
+<div class="d-flex align-items-center flex-column">
+  <div class="card border-info mb-3">
+
+    <div class="card-header text-center"><h1>Journal Entry for <%= current_date %>: </h1></div>
+      <div class="card-body ">
+            <% if @daily_journal.errors.any?  %>
+                <p><%= @daily_journal.errors.full_messages.to_sentence %></p>   
+            <% end %>        
+        <%= form_with model: @daily_journal, local: true do |f| %>
+              <%# first card %>
+                <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title">Daily Journal</h5>
+                       <%# mood %>
+                      <div class="field"> 
+                        <%= f.label :mood %><br /> 
+                        <%= f.text_field :mood, autofocus: true, autocomplete: "mood" %> 
+                      </div><br> 
+                       <%# daily_goal %>
+                      <div class="field"> 
+                        <%= f.label :daily_goal %><br /> 
+                        <%= f.text_field :daily_goal, autocomplete: "daily_goal" %> 
+                      </div><br> 
+                       <%# water_intake %>
+                      <div class="field"> 
+                        <%= f.label :water_intake, "Water Intake (cups or ounces)" %><br /> 
+                        <%= f.number_field :water_intake, autocomplete: "water_intake", min:"0" %> 
+                        </div>
+                      </div><br> 
+                       <%# notes %>
+                      <div class="field"> 
+                        <%= f.label :notes, "Notes for Today:" %><br /> 
+                        <%= f.text_area :notes, autocomplete: "notes" %> 
+                      </div> 
+                      </div><br>
+                      <%# meals card %>
+                      <div class="card">
+                         <div class="card-body">
+                            <h5 class="card-title">Meals</h5>
+                                <%  @daily_journal.meals.each do |meal| %>
+                                        <%= meal.category %>
+                                       <%= meal.time_eaten  %>
+                                       <%= meal.notes %>
+                                <% end%>
+                                    <ul class="nav nav-pills">
+                                    <li class="nav-item">
+                                        <%= link_to "New Meal", new_meal_path, class: "nav-link active" %>
+                                    </li>
+                                    <ul>                        
+                                </div>
+                                </div><br>
+                        <%#  workouts card %>
+                        <div class="card">
+                         <div class="card-body">
+                            <h5 class="card-title">Workouts</h5>
+                                <%  @daily_journal.workouts.each do |workout| %>
+                                        <%= workout.focus %>
+                                       <%= workout.time_of_day %>
+                                        <%= workout.duration %>
+                                       <%= workout.notes %>
+                                <% end%>
+                                    <ul class="nav nav-pills">
+                                    <li class="nav-item">
+                                        <%= link_to "New Workout", new_workout_path, class: "nav-link active" %>
+                                    </li>
+                                    <ul>                        
+                                </div>
+                                </div>
+                                </div>
+  <%# submit button %>
+  <div class="actions">
+    <%= f.submit "Create", class:"btn btn-primary"  %>
+  </div><br>
+  <%end%>
+  
+  </div>
+
+
+
+
+<%= link_to "Back", :back %>
