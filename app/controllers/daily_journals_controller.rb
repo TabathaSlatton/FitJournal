@@ -18,7 +18,7 @@ class DailyJournalsController < ApplicationController
     end
 
     def create
-        @daily_journal = DailyJournal.new(daily_journal_params)
+        @daily_journal = current_user.daily_journals.build(daily_journal_params)
         if @daily_journal.save
             redirect_to @daily_journal
         else

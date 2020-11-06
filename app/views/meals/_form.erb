@@ -1,31 +1,31 @@
-                    <h6>New Meal: </h6><br>
-                                <%= f.fields_for :meals, @new_meal do |meal| %>
-                                    <%= meal.label :category %>
-                                    <%= meal.select :category, ['Breakfast', 'Lunch', 'Dinner', 'Snack']%><br>
-                                       
-                                       <%= meal.label :time_eaten  %>
-                                       <%= meal.time_field :time_eaten %><br>
+<h6>New Meal: </h6><br>
+        <%= f.fields_for :meals, @new_meal do |meal| %>
+            <%= meal.label :category %>
+            <%= meal.select :category, ['Breakfast', 'Lunch', 'Dinner', 'Snack']%><br>
+                    
+                    <%= meal.label :time_eaten  %>
+                    <%= meal.time_field :time_eaten %><br>
 
-                                        <%= meal.fields_for :food_items, @food_1 do |food| %>
-                                            <%= food.label :name, "Food:" %>
-                                            <%= food.text_field :name %>
+                    <%= meal.fields_for :food_items, @food_1 do |food| %>
+                        <%= food.label :name, "Food:" %>
+                        <%= food.text_field :name %>
 
-                                            <%= food.label :calories %>
-                                            <%= food.number_field :calories, min: "0" %>
+                        <%= food.label :calories %>
+                        <%= food.number_field :calories, min: "0" %>
 
-                                            <%= food.label :carbs %>
-                                            <%= food.number_field :carbs, min: "0" %>
+                        <%= food.label :carbs %>
+                        <%= food.number_field :carbs, min: "0" %>
 
-                                            <%= food.label :protein %>
-                                            <%= food.number_field :protein, min: "0" %>
+                        <%= food.label :protein %>
+                        <%= food.number_field :protein, min: "0" %>
 
-                                            <%= food.label :fat %>
-                                            <%= food.number_field :fat, min: "0" %>
-                                        <% end %>
+                        <%= food.label :fat %>
+                        <%= food.number_field :fat, min: "0" %>
+                    <% end %>
 
-                                        
-                                         <%= meal.label :notes, "Notes for This Meal:" %><br /> 
-                                        <%= meal.text_area :notes, autocomplete: "notes" %> 
+                    
+                        <%= meal.label :notes, "Notes for This Meal:" %><br /> 
+                    <%= meal.text_area :notes, autocomplete: "notes" %> 
 
 
-                                <% end%>
+            <% end%>
