@@ -13,7 +13,8 @@ module DailyJournalsHelper
     end
 
     def todays_journal
-        DailyJournal.find_by(created_at: Date.new)
+        DailyJournal.all.last
+        # dependent on need_new_journal and last_jounal_date
     end
 
 end

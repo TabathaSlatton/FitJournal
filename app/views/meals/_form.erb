@@ -1,31 +1,131 @@
-<h6>New Meal: </h6><br>
-        <%= f.fields_for :meals, @new_meal do |meal| %>
-            <%= meal.label :category %>
-            <%= meal.select :category, ['Breakfast', 'Lunch', 'Dinner', 'Snack']%><br>
-                    
-                    <%= meal.label :time_eaten  %>
-                    <%= meal.time_field :time_eaten %><br>
-
-                    <%= meal.fields_for :food_items, @food_1 do |food| %>
-                        <%= food.label :name, "Food:" %>
-                        <%= food.text_field :name %>
-
-                        <%= food.label :calories %>
-                        <%= food.number_field :calories, min: "0" %>
-
-                        <%= food.label :carbs %>
-                        <%= food.number_field :carbs, min: "0" %>
-
-                        <%= food.label :protein %>
-                        <%= food.number_field :protein, min: "0" %>
-
-                        <%= food.label :fat %>
-                        <%= food.number_field :fat, min: "0" %>
-                    <% end %>
-
-                    
-                        <%= meal.label :notes, "Notes for This Meal:" %><br /> 
-                    <%= meal.text_area :notes, autocomplete: "notes" %> 
+<div class="d-flex align-items-center flex-column">
+  <div class="card text-black bg-dark mb-3" style="width: 90%;">
+    <div class="card-header text-center"><h1 style="color:white">Meal for <%= current_date %>: </h1></div>
+      <div class="card-body ">
+            <% if @meal.errors.any?  %>
+                <p><%= @meal.errors.full_messages.to_sentence %></p>   
+            <% end %>        
+        <%= form_for([@daily_journal, @meal], local: true) do |meal| %>
+              <%# first card %>
+                <div class="card ">
+                  <div class="card-body">
+                       <%# category %>
+                      <div class="field"> 
+                         <h4> <%= meal.label :category %><br> </h4>
+                          <h5>  <%= meal.select :category, ['Breakfast', 'Lunch', 'Dinner', 'Snack']%> </h5>
+                      </div>
+                       <%# time eaten %>
+                      <div class="field"> 
+                      <h4><%= meal.label :time_eaten  %></h4>
+                        <h5><%= meal.time_field :time_eaten %> </h5>
+                      </div><br>
 
 
-            <% end%>
+
+<div class="card-group ">
+  <div class="card  bg-light mb-3">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center">Food 1</h5>
+            <%= meal.fields_for :food_items, @food_1 do |food| %>
+                <%= food.label :name %><br>
+                <%= food.text_field :name %><br><br>
+
+                <%= food.label :calories %><br>
+                <%= food.number_field :calories, min: "0" %><br><br>
+
+                <%= food.label :carbs %><br>
+                <%= food.number_field :carbs, min: "0" %><br><br>
+
+                <%= food.label :protein %><br>
+                <%= food.number_field :protein, min: "0" %><br><br>
+
+                <%= food.label :fat %><br>
+                <%= food.number_field :fat, min: "0" %><br><br>
+            <% end %>    
+    </div>
+  </div>
+ <div class="card  border-light mb-3">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center">Food 2</h5>
+            <%= meal.fields_for :food_items, @food_2 do |food| %>
+                <%= food.label :name %><br>
+                <%= food.text_field :name %><br><br>
+
+                <%= food.label :calories %><br>
+                <%= food.number_field :calories, min: "0" %><br><br>
+
+                <%= food.label :carbs %><br>
+                <%= food.number_field :carbs, min: "0" %><br><br>
+
+                <%= food.label :protein %><br>
+                <%= food.number_field :protein, min: "0" %><br><br>
+
+                <%= food.label :fat %><br>
+                <%= food.number_field :fat, min: "0" %><br><br>
+            <% end %>    
+    </div>
+  </div>
+   <div class="card  bg-light mb-3">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center">Food 3</h5>
+            <%= meal.fields_for :food_items, @food_3 do |food| %>
+                <%= food.label :name %><br>
+                <%= food.text_field :name %><br><br>
+
+                <%= food.label :calories %><br>
+                <%= food.number_field :calories, min: "0" %><br><br>
+
+                <%= food.label :carbs %><br>
+                <%= food.number_field :carbs, min: "0" %><br><br>
+
+                <%= food.label :protein %><br>
+                <%= food.number_field :protein, min: "0" %><br><br>
+
+                <%= food.label :fat %><br>
+                <%= food.number_field :fat, min: "0" %><br><br>
+            <% end %>    
+    </div>
+  </div>
+ <div class="card  border-light mb-3">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center">Food 4</h5>
+            <%= meal.fields_for :food_items, @food_4 do |food| %>
+                <%= food.label :name %><br>
+                <%= food.text_field :name %><br><br>
+
+                <%= food.label :calories %><br>
+                <%= food.number_field :calories, min: "0" %><br><br>
+
+                <%= food.label :carbs %><br>
+                <%= food.number_field :carbs, min: "0" %><br><br>
+
+                <%= food.label :protein %><br>
+                <%= food.number_field :protein, min: "0" %><br><br>
+
+                <%= food.label :fat %><br>
+                <%= food.number_field :fat, min: "0" %><br><br>
+            <% end %>    
+    </div>
+  </div>
+</div>
+
+
+
+
+                  <h5>  <%= meal.label :notes, "Notes for This Meal:" %></h5>
+                    <%= meal.text_area :notes, autocomplete: "notes", class:"form-control" %>              
+                                </div>
+                                </div><br>
+                                </div>
+  <%# submit button %>
+  <div class="actions" style="align-self:center">
+    <%= meal.submit class:"btn btn-primary"%>
+  </div><br>
+  <%end%>
+  
+  </div>
+
+
+
+
+<%= link_to "Back", :back %>

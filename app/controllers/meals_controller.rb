@@ -2,15 +2,13 @@ class MealsController < ApplicationController
     before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
     def new
-        binding.pry
-        @daily_journal = DailyJournal.new
-        @new_meal = @daily_journal.meals.build
-        @food_1 = @new_meal.food_items.build
-        @food_2 = @new_meal.food_items.build
-        @food_3 = @new_meal.food_items.build
+        @daily_journal = DailyJournal.find_by_id(params[:daily_journal_id])
+        @meal = @daily_journal.meals.build
+        @food_1 = @meal.food_items.build
+        @food_2 = @meal.food_items.build
+        @food_3 = @meal.food_items.build
+        @food_4 = @meal.food_items.build
 
-        #build out nested object
-            # @daily_journal.workouts.build()
     end
 
     def create

@@ -1,36 +1,47 @@
 class DailyJournalsController < ApplicationController
-    before_action :set_journal, only: [:show, :edit, :update, :destroy]
+    before_action :set_journal, only: [:edit, :update, :destroy]
 
     def index
         @daily_journals = DailyJournal.all
     end
 
     def new
-        # if DailyJournal.all.last.created_at  ..... conditional to make a new form when date has changed
         @daily_journal = current_user.daily_journals.build
-        @new_meal = @daily_journal.meals.build
-        @food_1 = @new_meal.food_items.build
-        @food_2 = @new_meal.food_items.build
-        @food_3 = @new_meal.food_items.build
-
-        #build out nested object
-            # @daily_journal.workouts.build()
     end
 
     def create
         @daily_journal = current_user.daily_journals.build(daily_journal_params)
         if @daily_journal.save
-            redirect_to @daily_journal
+            redirect_to daily_journals_path
         else
             render :new
         end
     end
-  
-      def show
+
+    def edit
         if !@daily_journal
-          redirect_to daily_journals_path
+            redirect_to daily_journals_path
+        end
+    end
+
+      def update
+        if @daily_journal
+          @daily_journal.update(daily_journal_params)
+          if @daily_journal.errors.any?
+            render "edit"
+          else
+            redirect_to daily_journals_path
+          end
+        else
+          render "edit"
         end
       end
+  
+      def destroy
+        @daily_journal.destroy
+        redirect_to daily_journals_path
+      end
+  
 
     private
     def set_journal
