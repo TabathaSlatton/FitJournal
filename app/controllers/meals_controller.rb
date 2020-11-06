@@ -2,6 +2,7 @@ class MealsController < ApplicationController
     before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
     def new
+        binding.pry
         @daily_journal = DailyJournal.new
         @new_meal = @daily_journal.meals.build
         @food_1 = @new_meal.food_items.build
@@ -28,6 +29,6 @@ class MealsController < ApplicationController
     end
 
     def daily_journal_params
-        params.require(:meal).permit(:daily_journal_id, :time_eaten, :notes, :category, :food_items[:name, :calories, :carbs, :protein, :fat])
+        params.require(:meal).permit(:daily_journal_id, :time_eaten, :notes, :category, food_items:[:name, :calories, :carbs, :protein, :fat])
     end
 end

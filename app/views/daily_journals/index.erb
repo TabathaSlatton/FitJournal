@@ -1,6 +1,10 @@
 <h1>Daily Journals Index Page</h1>
 <ul class="nav nav-pills">
   <li class="nav-item">
+    <% if current_user.daily_journals.all.length == 0 || need_new_journal? %>
     <%= link_to "New Journal Entry", new_daily_journal_path, class: "nav-link active" %>
+    <% else %>
+    <%= link_to "Edit Today's Journal", edit_daily_journal_path(todays_journal), class: "nav-link active" %>
+    <% end %>
   </li>
 <ul>

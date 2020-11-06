@@ -7,7 +7,7 @@ class DailyJournalsController < ApplicationController
 
     def new
         # if DailyJournal.all.last.created_at  ..... conditional to make a new form when date has changed
-        @daily_journal = DailyJournal.new
+        @daily_journal = current_user.daily_journals.build
         @new_meal = @daily_journal.meals.build
         @food_1 = @new_meal.food_items.build
         @food_2 = @new_meal.food_items.build
