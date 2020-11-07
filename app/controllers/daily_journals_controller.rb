@@ -49,7 +49,7 @@ class DailyJournalsController < ApplicationController
     end
 
     def daily_journal_params
-        params.require(:daily_journal).permit(:user_id, :water_intake, :notes, :mood, :daily_goal)
+        params.require(:daily_journal).permit(:water_intake, :notes, :mood, :daily_goal)
     end
 
 end
