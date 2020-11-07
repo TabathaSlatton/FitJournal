@@ -38,6 +38,7 @@
                             <h5 class="card-title">Meals</h5>
                                 <%  @daily_journal.meals.each do |meal| %>
                                         <%= meal.category %>
+                                        <%= meal.calories %>
                                        <%= meal.time_eaten  %>
                                        <%= meal.notes %>
                                 <% end%>
