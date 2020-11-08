@@ -18,7 +18,7 @@
                 <% post.comments.each do |comment| %>
                 <small class="text-muted text-right font-italic align-end"><%= comment.updated_at.strftime('%b %d,  %Y %l:%M  %P') || comment.created_at.strftime('%b %d,  %Y %l:%M  %P') %></small>
                    <li class="list-group-item"><%= image_tag comment.user.profile_img_url, class: "img-fluid rounded-circle p-2", style: "height: 3rem"%><%= link_to comment.user.username, user_path(comment.user) %> &nbsp;&nbsp;&nbsp;&nbsp <%= comment.content %>  
-                          <% if comment.user_id = current_user.id %>
+                          <% if comment.user_id == current_user.id %>
                               <small class="p-2"><%= link_to 'Edit', edit_post_comment_path(post, comment), class:"card-link" %></small>
                           <% end%>
                           <% if comment.user_id == current_user.id || post.user_id == current_user.id %>

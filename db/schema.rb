@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_032840) do
+ActiveRecord::Schema.define(version: 2020_11_08_162745) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_032840) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "profile_img_url"
+    t.string "profile_img_url", default: "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg"
     t.float "starting_weight"
     t.float "current_weight"
     t.text "long_term_goal"

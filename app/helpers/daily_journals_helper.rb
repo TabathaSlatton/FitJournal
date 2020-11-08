@@ -1,7 +1,7 @@
 module DailyJournalsHelper
 
     def last_journal_date
-        DailyJournal.all.last.created_at.strftime('%A, %b %d')
+        current_user.daily_journals.last.created_at.strftime('%A, %b %d')
     end
 
     def need_new_journal?
@@ -13,7 +13,7 @@ module DailyJournalsHelper
     end
 
     def todays_journal
-        DailyJournal.all.last
+        current_user.daily_journals.last
         # dependent on need_new_journal and last_jounal_date
     end
 
