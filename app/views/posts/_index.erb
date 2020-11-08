@@ -10,14 +10,23 @@
           <div class="card border-info mb-3 w-60">
       <% end %>
           <div class="card-header">
-            <div class="d-flex align-items-center w-100"><%= image_tag post.user.profile_img_url, class: "img-fluid rounded-circle p-2", style: "height: 3rem"%><%= link_to post.user.username, user_path(post.user), class:"p2" %><small class="ml-auto p2"><%= post.updated_at.strftime('%b %d, %Y') || post.created_at.strftime('%b %d, %Y') %></small></div>
+            <div class="d-flex align-items-center w-100"><%= image_tag post.user.profile_img_url, class: "img-fluid rounded-circle p-2", style: "height: 3rem"%><%= link_to post.user.username, user_path(post.user), class:"p2" %><small class="ml-auto p2"><%= post.updated_at.strftime('%b %d,  %Y %l:%M  %P') || post.created_at.strftime('%b %d,  %Y: %l:%M  %P') %></small></div>
             </div>
             <div class="card-body">
               <%= post.content %><br><br><br>
               <ul class="list-group list-group">
                 <% post.comments.each do |comment| %>
-                <small class="text-muted text-right font-italic align-end"><%= post.updated_at.strftime('%b %d, %Y') || post.created_at.strftime('%b %d, %Y') %></small>
-                   <li class="list-group-item"><%= image_tag comment.user.profile_img_url, class: "img-fluid rounded-circle p-2", style: "height: 3rem"%><%= link_to comment.user.username, user_path(comment.user) %> &nbsp;&nbsp;&nbsp;&nbsp <%= comment.content %></li>
+                <small class="text-muted text-right font-italic align-end"><%= comment.updated_at.strftime('%b %d,  %Y %l:%M  %P') || comment.created_at.strftime('%b %d,  %Y %l:%M  %P') %></small>
+                   <li class="list-group-item"><%= image_tag comment.user.profile_img_url, class: "img-fluid rounded-circle p-2", style: "height: 3rem"%><%= link_to comment.user.username, user_path(comment.user) %> &nbsp;&nbsp;&nbsp;&nbsp <%= comment.content %>  
+                          <% if comment.user_id = current_user.id %>
+                              <small class="p-2"><%= link_to 'Edit', edit_post_comment_path(post, comment), class:"card-link" %></small>
+                          <% end%>
+                          <% if comment.user_id == current_user.id || post.user_id == current_user.id %>
+                            <small class="p-2"><%= link_to("Delete", post_comment_path(post, comment), method: :delete, data:{confirm: "Are you sure?"}) %></small>
+                          <% end %></li>
+                          
+
+                      
                 <% end %>
               </ul>
           <div class="modal-footer d-flex">

@@ -3,13 +3,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, 
          :omniauthable 
 
-  has_many :daily_journals
-  has_many :goals
-  has_many :posts
+  has_many :daily_journals, dependent: :destroy
+  has_many :goals, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
-    # maybe user can pull up all of the posts they've liked and commented on
-  has_many :likes 
-  has_many :comments
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :username, presence: true
 

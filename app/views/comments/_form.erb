@@ -17,13 +17,4 @@
 <div class="card text-white bg-dark mb-3 text-center mx-auto" style="width: 50rem; height: 16rem">
   <div class="card-body">
       <h4 class="card-title">How's it going?</h4>
-     <%= form_with(model: [@post, @post.comments.build], local: true) do |f| %>
-        <%= f.text_area :content, placeholder:"New Comment....", class:"form-control" %><br>
-        <div class="actions">
-            <%= f.submit class:"btn btn-primary"%>
-        </div><br>
-      <% end %>
-
-
-  </div>
-</div>
+     
