@@ -4,10 +4,8 @@ class MealsController < ApplicationController
     def new
         @daily_journal = DailyJournal.find_by_id(params[:daily_journal_id])
         @meal = @daily_journal.meals.build
-        @food_1 = @meal.food_items.build
-        @food_2 = @meal.food_items.build
-        @food_3 = @meal.food_items.build
-        @food_4 = @meal.food_items.build
+        4.times { @meal.food_items.build}
+
 
     end
 
@@ -20,10 +18,7 @@ class MealsController < ApplicationController
         else
             render :new
             @meal = @daily_journal.meals.build
-            @food_1 = @meal.food_items.build
-            @food_2 = @meal.food_items.build
-            @food_3 = @meal.food_items.build
-            @food_4 = @meal.food_items.build
+            4.times { @meal.food_items.build}
         end
     end
   
@@ -34,6 +29,6 @@ class MealsController < ApplicationController
     end
 
     def meal_params
-        params.require(:meal).permit(:daily_journal_id, :time_eaten, :notes, :category, food_items:[:name, :calories, :carbs, :protein, :fat])
+        params.require(:meal).permit(:daily_journal_id, :time_eaten, :notes, :category, food_items_attributes:[:name, :calories, :carbs, :protein, :fat])
     end
 end

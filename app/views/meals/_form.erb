@@ -5,99 +5,31 @@
         <% if @meal.errors.any?  %>
             <p><%= @meal.errors.full_messages.to_sentence %></p>   
         <% end %>        
-        <%= form_for(model: [@daily_journal, @meal], local: true) do |meal| %>
+        <%= form_with(model: [@daily_journal, @meal], local: true) do |meal| %>
             <div class="card-group ">
                 <%# first food card %>
-                <div class="card  bg-light mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align:center">Food 1</h5>
-                            <%= meal.fields_for :food_items, @food_1 do |food| %>
-                                <%= food.label :name %><br>
-                                <%= food.text_field :name %><br><br>
+                    <%= meal.fields_for :food_items do |food| %>
+                        <div class="card bg-light mb-3">
+                        <div class="card-body">
+                        <h5 class="card-title" style="text-align:center">Food</h5>
+                        <%= food.label :name %><br>
+                        <%= food.text_field :name %><br><br>
 
-                                <%= food.label :calories %><br>
-                                <%= food.number_field :calories, min: "0" %><br><br>
+                        <%= food.label :calories %><br>
+                        <%= food.number_field :calories, min: "0" %><br><br>
 
-                                <%= food.label :carbs %><br>
-                                <%= food.number_field :carbs, min: "0" %><br><br>
+                        <%= food.label :carbs %><br>
+                        <%= food.number_field :carbs, min: "0" %><br><br>
 
-                                <%= food.label :protein %><br>
-                                <%= food.number_field :protein, min: "0" %><br><br>
+                        <%= food.label :protein %><br>
+                        <%= food.number_field :protein, min: "0" %><br><br>
 
-                                <%= food.label :fat %><br>
-                                <%= food.number_field :fat, min: "0" %><br><br>                              
-                            <% end %>    
+                        <%= food.label :fat %><br>
+                        <%= food.number_field :fat, min: "0" %><br><br>    
                         </div>
-                    </div>
-                <%# second food card %>
-                <div class="card  border-light mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align:center">Food 2</h5>
-                            <%= meal.fields_for :food_items, @food_2 do |food| %>
-                                <%= food.label :name %><br>
-                                <%= food.text_field :name %><br><br>
-
-                                <%= food.label :calories %><br>
-                                <%= food.number_field :calories, min: "0" %><br><br>
-
-                                <%= food.label :carbs %><br>
-                                <%= food.number_field :carbs, min: "0" %><br><br>
-
-                                <%= food.label :protein %><br>
-                                <%= food.number_field :protein, min: "0" %><br><br>
-
-                                <%= food.label :fat %><br>
-                                <%= food.number_field :fat, min: "0" %><br><br>
-                            <% end %>    
-                        </div>
-                    </div>
-                <%# third food card %>
-                <div class="card bg-light mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align:center">Food 3</h5>
-                            <%= meal.fields_for :food_items, @food_3 do |food| %>
-                                <%= food.label :name %><br>
-                                <%= food.text_field :name %><br><br>
-
-                                <%= food.label :calories %><br>
-                                <%= food.number_field :calories, min: "0" %><br><br>
-
-                                <%= food.label :carbs %><br>
-                                <%= food.number_field :carbs, min: "0" %><br><br>
-
-                                <%= food.label :protein %><br>
-                                <%= food.number_field :protein, min: "0" %><br><br>
-
-                                <%= food.label :fat %><br>
-                                <%= food.number_field :fat, min: "0" %><br><br>
-                            <% end %>    
-                        </div>
-                    </div>
-                <%# fourth food card %>
-                <div class="card border-light mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title" style="text-align:center">Food 4</h5>
-                            <%= meal.fields_for :food_items, @food_4 do |food| %>
-                                <%= food.label :name %><br>
-                                <%= food.text_field :name %><br><br>
-
-                                <%= food.label :calories %><br>
-                                <%= food.number_field :calories, min: "0" %><br><br>
-
-                                <%= food.label :carbs %><br>
-                                <%= food.number_field :carbs, min: "0" %><br><br>
-
-                                <%= food.label :protein %><br>
-                                <%= food.number_field :protein, min: "0" %><br><br>
-
-                                <%= food.label :fat %><br>
-                                <%= food.number_field :fat, min: "0" %><br><br>
-                            <% end %>    
-                        </div>
-                    </div>
-                </div>
-                <h5> <%= meal.label :notes, "Notes for This Meal:", style:"color:white" %></h5>
-                    <%= meal.text_area :notes, autocomplete: "notes", class:"form-control" %><br> 
+                        </div>                              
+                    <% end %>    
+                     </div>            
                  <%# category %>
                 <h5><%= meal.label :category, "Meal Category:", style:"color:white" %></h5> 
                      <%= meal.select :category, ['Breakfast', 'Lunch', 'Dinner', 'Snack']%> <br><br>
