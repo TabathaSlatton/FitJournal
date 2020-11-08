@@ -14,6 +14,12 @@
             </div>
             <div class="card-body">
               <%= post.content %><br><br><br>
+              <ul class="list-group list-group">
+                <% post.comments.each do |comment| %>
+                <small class="text-muted text-right font-italic align-end"><%= post.updated_at.strftime('%b %d, %Y') || post.created_at.strftime('%b %d, %Y') %></small>
+                   <li class="list-group-item"><%= image_tag comment.user.profile_img_url, class: "img-fluid rounded-circle p-2", style: "height: 3rem"%><%= link_to comment.user.username, user_path(comment.user) %> &nbsp;&nbsp;&nbsp;&nbsp <%= comment.content %></li>
+                <% end %>
+              </ul>
           <div class="modal-footer d-flex">
           <span class="mr-auto p-2"><%= link_to 'Comment', new_post_comment_path(post), class:"card-link" %></span>
 
@@ -21,6 +27,7 @@
           <small class="p-2"><%= link_to 'Edit', edit_post_path(post), class:"card-link" %></small>
           <small class="p-2"><%= link_to("Delete", post, method: :delete, data:{confirm: "Are you sure?"}) %></small>
                 <% end %>
+          
           </div>
     </div>
     </div>
