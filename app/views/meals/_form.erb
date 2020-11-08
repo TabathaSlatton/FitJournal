@@ -5,7 +5,7 @@
         <% if @meal.errors.any?  %>
             <p><%= @meal.errors.full_messages.to_sentence %></p>   
         <% end %>        
-        <%= form_for([@daily_journal, @meal], local: true) do |meal| %>
+        <%= form_for(model: [@daily_journal, @meal], local: true) do |meal| %>
             <div class="card-group ">
                 <%# first food card %>
                 <div class="card  bg-light mb-3">

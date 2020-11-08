@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   # get '/auth/:provider/callback' => 'sessions#omniauth' 
   # get 'auth/failure', to: redirect('/')
-  resources :goals, :users
+  resources :goals
+  resources :users, :only => [:show]
 
 
   

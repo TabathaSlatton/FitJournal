@@ -1,0 +1,29 @@
+<%# post user is commenting on %>
+<% if @post.theme == "food"%>
+    <div class="card border-success mb-3 w-60">
+    <% elsif @post.theme == "fitness" %>
+    <div class="card border-warning mb-3 w-60">
+    <% else %>
+     <div class="card border-info mb-3 w-60">
+<% end %>
+          <div class="card-header">
+            <div class="d-flex align-items-center w-100"><%= image_tag @post.user.profile_img_url, class: "img-fluid rounded-circle p-2", style: "height: 3rem"%><%= link_to @post.user.username, user_path(@post.user), class:"p2" %><small class="ml-auto p2"><%= @post.updated_at.strftime('%b %d, %Y') || @post.created_at.strftime('%b %d, %Y') %></small></div>
+            </div>
+            <div class="card-body">
+              <%= @post.content %><br><br><br>
+            </div>
+        </div>
+<%# comment form %>
+<div class="card text-white bg-dark mb-3 text-center mx-auto" style="width: 50rem; height: 16rem">
+  <div class="card-body">
+      <h4 class="card-title">How's it going?</h4>
+     <%= form_with(model: [@post, @post.comments.build], local: true) do |f| %>
+        <%= f.text_area :content, placeholder:"New Comment....", class:"form-control" %><br>
+        <div class="actions">
+            <%= f.submit class:"btn btn-primary"%>
+        </div><br>
+      <% end %>
+
+
+  </div>
+</div>

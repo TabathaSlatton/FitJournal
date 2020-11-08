@@ -8,15 +8,15 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
         if @post.save
-            redirect_to daily_journals_path
+            redirect_to root_path
         else
-            render :new
+            redirect_to root_path, notice: "Post not created"
         end
     end
 
     def edit
         if !@post
-            redirect_to root_route
+            redirect_to root_path, notice: "Post not found"
         end
     end
 
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
           if @post.errors.any?
             render "edit"
           else
-            redirect_to root_route
+            redirect_to root_path
           end
         else
           render "edit"
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   
       def destroy
         @post.destroy
-        redirect_to "application#home"
+        redirect_to root_path
       end
   
 

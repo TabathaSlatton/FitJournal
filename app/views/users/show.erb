@@ -1,6 +1,14 @@
-<% if user_signed_in? %>
-    <%= @user.first_name %>
+<div class="jumbotron bg-info d-flex align-items-center flex-column">
+  <h1 class="display-3"><%= image_tag @user.profile_img_url, class: "img-fluid rounded-circle", style: "height: 5rem"%>
+<%= @user.first_name %> <%= @user.last_name %></h1>
+<div class="card bg-light text-center p-3 align-self-center" style="width: 40rem; height: 10rem">
+  <div class="card-body">
+    <h4 class="card-title">Long Term Goal</h4>
+    <p class="card-text"><%= @user.long_term_goal %></p>
+  </div>
+</div>
+</div><br>
+<% if @user.id == current_user.id %>
+<%= render "posts/form"  %><br><br>
 <% end %>
-<p>this is the user show page</p>
-
-        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+<%= render "posts/index" %>

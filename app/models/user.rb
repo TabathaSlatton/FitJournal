@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_many :likes 
   has_many :comments
 
+  validates :username, presence: true
+
+
+
          def self.google_omniauth(auth)
           where(provider: auth["provider"], uid: auth["uid"]).first_or_create(email: auth["info"]["email"]) do |user|
               user.username = auth.info.name
