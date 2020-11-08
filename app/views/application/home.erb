@@ -7,11 +7,25 @@
   <div class="card-header lead">Summary for <%= current_date %>: </div>
   <div class="card-body">
     <div class="card-group">
-    <div class="card">
+    <div class="card align-items-center">
     
     <div class="card-body">
       <h5 class="card-title">Pounds Lost:</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      
+          <% if @user.starting_weight && @user.current_weight %>
+              <h1 class="text-center text-success"><%= pounds_lost(@user) %></h1>
+                <% if @user.goal_weight %>
+                    <h5 class="card-title">Pounds To Go:</h5>
+                    <h1 class="text-center text-success"><%= pounds_to_go(@user) %></h1>
+                <% end %>
+          <% else %>
+             <p class="card-text"> Please update your weight in your profile to access this information</p>
+          <% end%>
+          <ul class="nav nav-pills">
+            <li class="nav-item align-self-center">
+                <%= link_to "Update Weight", edit_user_registration_path, class:"nav-link active" %>
+            </li>
+        </ul>
     </div>
   </div>
   <div class="card">
@@ -50,7 +64,11 @@
 <div class="card bg-dark text-white text-center p-3" style="max-width: 20rem; height: 20rem">
   <div class="card-body">
     <h4 class="card-title">Light card title</h4>
-    <p class="card-text"><%= current_user.long_term_goal %></p>
+        <% if @user.long_term_goal && @user.long_term_goal != ""%>
+          <p class="card-text"><%= current_user.long_term_goal %></p>
+        <% else %>
+          <br><h5 class="card-text">Please update your profile to create/view your long term goal.</h5>
+        <% end %>
   </div>
 </div>
 </div>
