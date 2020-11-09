@@ -17,4 +17,15 @@ module DailyJournalsHelper
         # dependent on need_new_journal and last_jounal_date
     end
 
+    def update_daily_calories
+        if !need_new_journal?
+            calories = 0
+            todays_journal.meals.each do |meal|
+                calories += meal.calories
+            end
+            calories
+        else
+            "Please update your journal to access calorie information"
+        end
+    end
 end

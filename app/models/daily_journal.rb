@@ -9,5 +9,9 @@ class DailyJournal < ApplicationRecord
     # accepts_nested_attributes_for :workouts, reject_if: proc { |attributes| attributes['name'].blank? ||  attributes['calories_burned'].blank?}
     # accepts_nested_attributes_for :meals, reject_if: proc { |attributes| attributes['name'].blank? ||  attributes['calories'].blank?}
     # add accepts for food and exercise 
+
+
+
+   
     
 end
