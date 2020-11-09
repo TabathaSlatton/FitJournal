@@ -37,10 +37,43 @@
                          <div class="card-body">
                             <h5 class="card-title">Meals</h5>
                                 <%  @daily_journal.meals.each do |meal| %>
-                                        <%= meal.category %>
-                                        <%= meal.calories %>
-                                       <%= meal.time_eaten  %>
-                                       <%= meal.notes %>
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <h4 class="card-title"><%= meal.category %>: <%= meal.calories %></h4>
+                                      <% if meal.time_eaten%>
+                                      <h6 class="card-subtitle mb-2 text-muted"><%= meal.time_eaten.strftime('%l:%M  %P')  %></h6>
+                                      <% end %>
+                                       <table class="table table-hover">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">Food</th>
+                                                    <th scope="col">Calories</th>
+                                                    <th scope="col">Carbs</th>
+                                                    <th scope="col">Protein</th>
+                                                    <th scope="col">Fat</th>
+                                                    <th scope="col"></th>
+                                                  </tr>
+                                                  </thead>
+                                                  <tbody>
+                                       <% meal.food_items.each do |fi| %>
+                                               <tr class="table-info">
+                                                    <th scope="row"><%= fi.name %>: </th>
+                                                    <td><%= fi.calories %> Calories</td>
+                                                    <td><%= fi.carbs %> Carbs</td>
+                                                    <td><%= fi.protein %> Protein</td>
+                                                    <td><%= fi.fat %> Fat</td>
+                                                    <td><small><%= link_to "Delete Food", food_item_path(fi), method: :delete, data:{confirm: "Are you sure?"}, class:"card-link, text-right"	 %></small></td>
+                                                </tr>
+                                        <% end %>
+                                        </tbody>
+                                        </table>
+                                      <p class="card-text"><%= meal.notes %></p>
+                                      <%= link_to 'Edit', edit_daily_journal_meal_path(@daily_journal, meal), class:"card-link" %>
+                                      <%= link_to "Delete", daily_journal_meal_path(@daily_journal, meal), method: :delete, data:{confirm: "Are you sure?"}, class:"card-link" %>
+                                    </div>
+                                  </div>
+                                       
+                                       
                                 <% end%>
                                     <% if @daily_journal.id %>
                                     <ul class="nav nav-pills">

@@ -5,7 +5,7 @@
         <% if @meal.errors.any?  %>
             <p><%= @meal.errors.full_messages.to_sentence %></p>   
         <% end %>        
-        <%= form_with(model: [@daily_journal, @meal], local: true) do |meal| %>
+        <%= form_with(model: [@daily_journal, journal_meal], local: true) do |meal| %>
             <div class="card-group ">
                 <%# first food card %>
                     <%= meal.fields_for :food_items do |food| %>
@@ -29,7 +29,10 @@
                         </div>
                         </div>                              
                     <% end %>    
-                     </div>            
+                     </div>  
+                 <%# notes %>
+                <h5><%= meal.label :notes, "Notes for this meal:", style:"color:white" %></h5> 
+                     <%= meal.text_area :notes, class:"form-control"%> <br><br>          
                  <%# category %>
                 <h5><%= meal.label :category, "Meal Category:", style:"color:white" %></h5> 
                      <%= meal.select :category, ['Breakfast', 'Lunch', 'Dinner', 'Snack']%> <br><br>

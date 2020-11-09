@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :goals
   resources :users, :only => [:show]
 
+  resources :food_items, :only => [:destroy]
+
 
   
   root to: "application#home"
