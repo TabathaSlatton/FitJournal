@@ -1,24 +1,33 @@
-# README
+# FitJournal
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Watch this video to understand how this app works!](https://youtu.be/fO-NLEfDk6w)
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby
+- Rails and ActiveRecord
+- SQLite3
+- HTML5 & CSS
+- Bootstrap
 
-* System dependencies
+## Usage
 
-* Configuration
+Clone down from [github.](https://github.com/TabathaSlatton/Sinatra-Project-FitJournal.git)
 
-* Database creation
+```ruby
+bundle install
+rake db:migrate
+rails s
+```
 
-* Database initialization
+Copy the link shotgun is open on (http://localhost:3000/)
 
-* How to run the test suite
+Open your browser an paste in the link. App will open.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributing
 
-* Deployment instructions
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-* ...
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

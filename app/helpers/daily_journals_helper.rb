@@ -18,14 +18,14 @@ module DailyJournalsHelper
     end
 
     def update_daily_calories
-        if !need_new_journal?
+        if current_user.daily_journals.count > 1 && !need_new_journal? 
             calories = 0
             todays_journal.meals.each do |meal|
                 calories += meal.calories
             end
             calories
         else
-            "Please update your journal to access calorie information"
+            "0"
         end
     end
 end
