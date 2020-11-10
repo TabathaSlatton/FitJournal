@@ -95,7 +95,7 @@
                                                       <div class="card-body">
                                                         <h4 class="card-title"><%= workout.focus %>: <%= workout.calories_burned %></h4>
                                                           <% if workout.time_of_day%>
-                                                            <h6 class="card-subtitle mb-2 text-muted"><%= workout.time_of_day.strftime('%l:%M  %P')  %></h6>
+                                                            <h6 class="card-subtitle mb-2 text-muted"><%= workout.time_of_day  %></h6>
                                                           <% end %>
                                                           <% if workout.duration%>
                                                           <h6 class="card-subtitle mb-2 text-muted"><%= workout.duration  %></h6>
