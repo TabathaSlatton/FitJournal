@@ -13,7 +13,7 @@ class FoodItemsController < ApplicationController
   private
 
   def set_meal
-    @meal = Meal.find_by_id(params[:sushi_id])
+    @meal = Meal.find_by_id(params[:meal_id])
   end
 
 

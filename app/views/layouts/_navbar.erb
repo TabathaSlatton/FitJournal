@@ -19,7 +19,7 @@
         <li class="nav-item"><%= link_to "Journal", daily_journals_path, class:"nav-link" %>
         <li class="nav-item"><%= link_to "Goals", "/", class:"nav-link" %>
         <li class="nav-item"><%= link_to "Profile", user_path(current_user), class:"nav-link" %>
-      <li><%= image_tag current_user.profile_img_url, class: "img-fluid rounded-circle", style: "height: 2rem"%></li>
+      <li><%= link_to image_tag current_user.profile_img_url, class: "img-fluid rounded-circle", style: "height: 2rem"%></li>
 
 
     <% else %>

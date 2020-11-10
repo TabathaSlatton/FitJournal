@@ -11,4 +11,4 @@ class Meal < ApplicationRecord
         end
         self.calories = calories
     end
-end
+end  
