@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
         authenticate_user! 
        @user = current_user 
        @post = Post.new
-       @posts = Post.order(:updated_at || :created_at).reverse
+       @posts = Post.search(params[:search]).order(:updated_at || :created_at).reverse
     end
 
 end

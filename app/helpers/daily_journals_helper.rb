@@ -25,7 +25,23 @@ module DailyJournalsHelper
             end
             calories
         else
-            "0"
+            0
         end
+    end
+
+    def update_daily_calories_burned
+        if current_user.daily_journals.count > 1 && !need_new_journal? 
+            calories = 0
+            todays_journal.workouts.each do |workout|
+                calories += workout.calories_burned
+            end
+            calories
+        else
+            0
+        end
+    end
+
+    def update_net_calories
+        update_daily_calories - update_daily_calories_burned
     end
 end

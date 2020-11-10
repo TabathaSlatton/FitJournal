@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
     end
 
     def edit
+      # comment.user_id = current_user.id
         if !@comment
             redirect_to root_path, notice: "Comment not found"
         end

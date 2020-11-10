@@ -47,12 +47,12 @@ class WorkoutsController < ApplicationController
   
       def destroy
         @workout.destroy
-        redirect_to edit_daily_journal_path(@daily_journal)
+        redirect_to edit_daily_journal_path(@daily_journal) 
       end
   
     
     private
-    def set_meal
+    def set_workout
         @workout = Workout.find_by_id(params[:id])
     end
 
@@ -60,7 +60,7 @@ class WorkoutsController < ApplicationController
         @daily_journal = DailyJournal.find_by_id(params[:daily_journal_id])
     end
 
-    def meal_params
+    def workout_params
         params.require(:workout).permit(:daily_journal_id, :time_of_day, :notes, :focus, :duration, exercises_attributes:[:name, :calories_burned, :id])
     end
 end

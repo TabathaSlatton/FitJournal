@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:show]
 
   resources :food_items, :only => [:destroy]
+  resources :exercises, :only => [:destroy]
 
 
   

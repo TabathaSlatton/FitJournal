@@ -1,0 +1,46 @@
+<div class="d-flex align-items-center flex-column">
+  <div class="card text-black bg-dark mb-3" style="width: 90%;">
+    <div class="card-header text-center"><h1 style="color:white">Workout for <%= current_date %>: </h1></div>
+      <div class="card-body ">
+        <% if @workout.errors.any?  %>
+            <p><%= @workout.errors.full_messages.to_sentence %></p>   
+        <% end %>        
+        <%= form_with(model: [@daily_journal, journal_workout], local: true) do |workout| %>
+            <div class="card-group ">
+                <%# first exercise card %>
+                    <%= workout.fields_for :exercises do |exercise| %>
+                        <div class="card bg-light mb-3">
+                        <div class="card-body">
+                        <h5 class="card-title" style="text-align:center">Exercise</h5>
+                        <%= exercise.label :name %><br>
+                        <%= exercise.text_field :name %><br><br>
+
+                        <%= exercise.label :calories_burned %><br>
+                        <%= exercise.number_field :calories_burned, min: "0" %><br><br>
+
+                        </div>
+                        </div>                              
+                    <% end %>    
+                     </div>  
+                 <%# notes %>
+                <h5><%= workout.label :notes, "Notes for this workout:", style:"color:white" %></h5> 
+                     <%= workout.text_area :notes, class:"form-control"%> <br><br>          
+                 <%# focus %>
+                <h5><%= workout.label :focus, "Workout focus:", style:"color:white" %></h5> 
+                     <%= workout.select :focus, ['Arms', 'Legs', 'Abs', 'Whole Body', 'Glutes', 'Back', 'Cardio', 'Flexibility']%> <br><br>
+                <%# time of day %>
+                <h5><%= workout.label :time_of_day, "Time of workout:", style:"color:white"  %></h5> 
+                    <%= workout.time_field :time_of_day %> <br> <br> 
+                <%# duration %>
+                <h5><%= workout.label :duration, "Duration of workout (minutes):", style:"color:white"  %></h5> 
+                    <%= workout.number_field :duration, min: "0" %> <br> <br> 
+                <%# submit button %>
+                <div class="actions">
+                    <%= workout.submit class:"btn btn-primary"%>
+                </div><br>
+            <%end%>         
+        </div>
+        </div><br>
+    </div>
+ </div>
+<%= link_to "Back", :back %>

@@ -2,9 +2,9 @@
   <div class="card border-info mb-3">
     <div class="card-header text-center"><h1>Journal Entry for <%= current_date %>: </h1></div>
       <div class="card-body ">
-            <% if @daily_journal.errors.any?  %>
-                <p><%= @daily_journal.errors.full_messages.to_sentence %></p>   
-            <% end %>        
+        <% if @daily_journal.errors.any?  %>
+            <p><%= @daily_journal.errors.full_messages.to_sentence %></p>   
+        <% end %>        
         <%= form_with model: @daily_journal, local: true do |f| %>
               <%# first card %>
                 <div class="card">
@@ -65,7 +65,7 @@
                                                     <td><small><%= link_to "Delete Food", food_item_path(fi), method: :delete, data:{confirm: "Are you sure?"}, class:"card-link, text-right"	 %></small></td>
                                                 </tr>
                                         <% end %>
-                                        </tbody>
+                                         </tbody>
                                         </table>
                                       <p class="card-text"><%= meal.notes %></p>
                                       <%= link_to 'Edit', edit_daily_journal_meal_path(@daily_journal, meal), class:"card-link" %>
@@ -86,28 +86,57 @@
                                     <% end %>                    
                                 </div>
                                 </div><br>
-                        <%#  workouts card %>
-                        <div class="card">
-                         <div class="card-body">
-                            <h5 class="card-title">Workouts</h5>
-                                <%  @daily_journal.workouts.each do |workout| %>
-                                        <%= workout.focus %>
-                                       <%= workout.time_of_day %>
-                                        <%= workout.duration %>
-                                       <%= workout.notes %>
-                                <% end%>
-                                    <% if @daily_journal.id %>
-                                    <ul class="nav nav-pills">
-                                    <li class="nav-item">
-                                        <%= link_to "New Workout", new_daily_journal_workout_path(@daily_journal), class: "nav-link active" %>
-                                    </li>
-                                    <ul>   
-                                     <% else %> 
-                                        <p>Please update journal to access meal updates </p> 
-                                    <% end %>                      
-                                </div>
-                                </div>
-                                </div>
+                                <%# workout cards %>
+                                   <div class="card">
+                                      <div class="card-body">
+                                         <h5 class="card-title">Workouts</h5>
+                                            <%  @daily_journal.workouts.each do |workout| %>
+                                                    <div class="card">
+                                                      <div class="card-body">
+                                                        <h4 class="card-title"><%= workout.focus %>: <%= workout.calories_burned %></h4>
+                                                          <% if workout.time_of_day%>
+                                                            <h6 class="card-subtitle mb-2 text-muted"><%= workout.time_of_day.strftime('%l:%M  %P')  %></h6>
+                                                          <% end %>
+                                                          <% if workout.duration%>
+                                                          <h6 class="card-subtitle mb-2 text-muted"><%= workout.duration  %></h6>
+                                                          <% end %>
+                                                          <table class="table table-hover">
+                                                          <thead>
+                                                            <tr>
+                                                              <th scope="col">Exercise</th>
+                                                              <th scope="col">Calories Burned</th>
+                                                              <th scope="col"></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <% workout.exercises.each do |ex| %>
+                                                              <tr class="table-info">
+                                                                <th scope="row"><%= ex.name %>: </th>
+                                                                <td><%= ex.calories_burned %> Calories</td>
+                                                                <td><small><%= link_to "Delete Exercise", exercise_path(ex), method: :delete, data:{confirm: "Are you sure?"}, class:"card-link, text-right"	 %></small></td>
+                                                            </tr>
+                                                            <% end %>
+                                                             </tbody>
+                                                            </table>
+                                                          <p class="card-text"><%= workout.notes %></p>
+                                                          <%= link_to 'Edit', edit_daily_journal_workout_path(@daily_journal, workout), class:"card-link" %>
+                                                          <%= link_to "Delete", daily_journal_workout_path(@daily_journal, workout), method: :delete, data:{confirm: "Are you sure?"}, class:"card-link" %>
+                                                        </div>
+                                                      </div>
+                                                          
+                                                          
+                                                    <% end%>
+                                                        <% if @daily_journal.id %>
+                                                        <ul class="nav nav-pills">
+                                                        <li class="nav-item">
+                                                            <%= link_to "New Workout", new_daily_journal_workout_path(@daily_journal), class: "nav-link active" %>
+                                                        </li>
+                                                        <ul>  
+                                                        <% else %> 
+                                                            <p>Please update journal to access workout updates </p> 
+                                                        <% end %>                    
+                                                    </div>
+                                                    </div><br>
   <%# submit button %>
   <div class="actions align-self-center">
     <%= f.submit "Update", class:"btn btn-primary"  %>
