@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_161913) do
+ActiveRecord::Schema.define(version: 2020_11_08_162745) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -116,7 +119,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_161913) do
 
   create_table "workouts", force: :cascade do |t|
     t.integer "daily_journal_id"
-    t.datetime "time_of_day"
+    t.string "time_of_day"
     t.integer "calories_burned"
     t.string "focus"
     t.string "duration"
